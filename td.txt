@@ -1,4 +1,4 @@
-aws dynamodb scan --table-name akki-tf-lock-table --region ap-south-1
+aws dynamodb scan --table-name aish-tf-lock-table --region ap-south-1
 
 
 aws s3api delete-objects \
