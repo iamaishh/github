@@ -1,3 +1,13 @@
+INSTALL DOCKER
+sudo apt update -y
+curl https://get.docker.com >> docker.sh
+chmod +x docker.sh
+sudo ./docker.sh
+
+sudo apt install docker-compose -y
+
+------------------------------------------
+
 STEP 3: INSTALL AWS CLI
 sudo apt update -y
 sudo apt install unzip -y
