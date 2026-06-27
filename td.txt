@@ -1,0 +1,22 @@
+aws dynamodb scan --table-name akki-tf-lock-table --region ap-south-1
+
+
+aws s3api delete-objects \
+--bucket aish-tf-state-bucket \
+--delete "$(aws s3api list-object-versions \
+--bucket aish-tf-state-bucket \
+--output=json \
+--query='{Objects: Versions[].{Key:Key,VersionId:VersionId}}')"
+
+
+aws s3api delete-objects \
+--bucket aish-tf-state-bucket \
+--delete "$(aws s3api list-object-versions \
+--bucket aish-tf-state-bucket \
+--output=json \
+--query='{Objects: DeleteMarkers[].{Key:Key,VersionId:VersionId}}')"
+
+
+aws s3 rb s3://aish-tf-state-bucket
+
+aws dynamodb delete-table --table-name aish-tf-lock-table --region ap-south-1
